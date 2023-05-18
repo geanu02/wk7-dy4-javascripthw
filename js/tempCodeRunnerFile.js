@@ -1,0 +1,1 @@
+const { clientId, clientSecret } = data
