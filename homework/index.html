@@ -1,12 +1,43 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-bs-theme="dark">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+    <link rel="stylesheet" href="./static/main.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous" defer></script>
+    <script src="./js/script.js" defer></script>
     <title>Document</title>
 </head>
 <body>
-    
+    <main class="main">
+        <div class="logo">
+            <img src="./static/f1.png" alt="Formula One">
+        </div>
+        <div class="upper">
+            <form action="" id="searchForm" class="input-group needs-validation inputGroup" novalidate>
+                <span class="input-group-text">Year and Round</span>
+                <input type="text" class="form-control" id="txtYr" placeholder="year" required>
+                <input type="text" class="form-control" id="txtRound" placeholder="round" required>
+                <input type="submit" class="btn btn-outline-primary submitButton" value="Submit">
+            </form>
+        </div>
+
+        <div class="lower" id="lowerDiv">
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th scope="col">Position</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Nationality</th>
+                        <th scope="col">Sponsor</th>
+                        <th scope="col">Score</th>
+                    </tr>
+                </thead>
+                <tbody id="tableBody"></tbody>
+            </table>
+        </div>
+    </main>
 </body>
 </html>

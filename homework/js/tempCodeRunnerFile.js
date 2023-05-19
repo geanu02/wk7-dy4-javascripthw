@@ -1,0 +1,1 @@
+(async () => console.log(await getF1Data(2021,1)))()
