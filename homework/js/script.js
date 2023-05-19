@@ -1,8 +1,17 @@
+const lowerDiv = document.getElementById('lowerDiv')
 const searchForm = document.getElementById('searchForm')
 const tableBody = document.getElementById('tableBody')
 const txtYr = document.getElementById('txtYr')
 const txtRound = document.getElementById('txtRound')
 let tableLoaded = false
+
+function checkLowerDiv() {
+    if (!tableLoaded) {
+        lowerDiv.style.display = "none"
+    } else {
+        lowerDiv.style.display = "initial"
+    }
+}
 
 async function getF1Data(year, round) {
     const res = await fetch(`https://ergast.com/api/f1/${year}/${round}/driverStandings.json`, {method: "GET"})
@@ -60,30 +69,12 @@ function fillTable(showData) {
 searchForm.addEventListener('submit', async e => {
     e.preventDefault()
     if (tableLoaded) {
+        checkLowerDiv()
         tableBody.innerHTML = ''
         tableLoaded = false
     }
     const data = await getF1Data(txtYr.value, txtRound.value)
     fillTable(transformData(data))
     tableLoaded = true
+    checkLowerDiv()
 })
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(() => {
-    'use strict'
-
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    const forms = document.querySelectorAll('.needs-validation')
-
-    // Loop over them and prevent submission
-    Array.from(forms).forEach(form => {
-        form.addEventListener('submit', event => {
-        if (!form.checkValidity()) {
-            event.preventDefault()
-            event.stopPropagation()
-        }
-
-        form.classList.add('was-validated')
-        }, false)
-    })
-})()
